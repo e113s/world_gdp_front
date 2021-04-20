@@ -1,0 +1,91 @@
+<h1>Paises</h1>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-6 input-group">
+    <input 
+      class="form-control" 
+      type="text" 
+      placeholder="Buscar Por Nombre"
+      [(ngModel)]="search"
+      (keyup.enter)="busqueda()"/>
+    <button 
+      id="btnSearch" 
+      class="btn btn-primary btn-sm"
+      (click)="busqueda()">
+      <i class="fa fa-search"></i> Buscar</button>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Continente</th>
+          <th>Región</th>
+        </tr>
+
+        <tr>
+          <th>
+            <select 
+              class="form-control filter" 
+              name="continent" 
+              [(ngModel)]="selectedContinent"
+              (change)="searchContinent()">
+              <option>Todos</option>
+              <option *ngFor="let continent of continents">{{continent}}</option>
+            </select>
+          </th>
+
+          <th>
+            <select 
+              class="form-control filter" 
+              name="region" 
+              [(ngModel)]="selectedRegion"
+              (change)="searchRegion()">
+              <option>Todos</option>
+              <option *ngFor="let region of regions">{{region}}</option>
+            </select>
+          </th>
+        </tr>
+      </thead>
+    </table>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Continente</th>
+          <th>Región</th>
+          <th>Superficie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of country.list | paginate : {
+          itemsPerPage: 20,
+          currentPage: pageNo,
+          totalItems: count
+        };">
+          <td><a [routerLink]="['/countries', country.code]">{{country.code}}</a></td>
+          <td>{{country.name}}</td>
+          <td>{{country.continent}}</td>
+          <td>{{country.region}}</td>
+          <td>{{country.surfaceArea}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row justify-content-md-center">
+      <pagination-controls
+      previousLabel="Anterior"
+      nextLabel="Siguiente"
+      responsive="true"
+      (pageChange)="handlePagination($event)"
+      >
+      </pagination-controls>
+    </div>
+  </div>
+</div>

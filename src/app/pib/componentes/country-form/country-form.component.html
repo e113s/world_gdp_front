@@ -1,0 +1,198 @@
+<head>
+  <title>{{ countryDetails.code }} - {{ countryDetails.name }}</title>
+</head>
+<div>
+  <nav>
+    <ol class="breadcrumb" role="navigation" aria-label="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Countries</a></li>
+      <li class="breadcrumb-item active">
+        <a [routerLink]="['/countries', countryDetails.code]">{{
+          countryDetails.name
+        }}</a>
+      </li>
+      <li class="breadcrumb-item">
+        Editando {{ countryDetails.name }} ({{ countryDetails.code }}/{{
+          countryDetails.code2
+        }})
+      </li>
+    </ol>
+  </nav>
+
+  <h1>
+    Editando {{ countryDetails.name }} ({{ countryDetails.code }}/{{
+      countryDetails.code2
+    }})
+  </h1>
+
+  <form class="form-horizontal">
+    <div class="row">
+      <div class="col-md-4">
+        <label class="control-label required" for="name">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.name }}"
+          disabled
+        />
+      </div>
+      <div class="col-md-4">
+        <label class="control-label required" for="localName"
+          >Nombre Local</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.localName }}"
+          disabled
+        />
+      </div>
+      <div class="col-md-4">
+        <label class="control-label required" for="capital">Capital</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ capitalObject.name }}"
+          disabled
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-6">
+        <label class="control-label" for="continent">Continente</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.continent }}"
+          disabled
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="control-label" for="region">Region</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.region }}"
+          disabled
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-6">
+        <label class="control-label" for="headOfState">Presidente</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.headOfState }}"
+          id="headOfStateInput"
+          name="headOfState"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="control-label" for="government">Tipo De Gobierno</label>
+        <!--<input type="text" class="form-control" value="{{countryDetails.governmentForm}}"/>-->
+        <select class="form-control" [(ngModel)]="governmentFormSelected" name="governmentForm">
+          <option *ngFor="let government of governmentForms">
+            {{ government }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-6">
+        <label class="control-label" for="independentYear"
+          >Año De Independencia</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.indepYear }}"
+          disabled
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="control-label" for="surfaceArea">Superficie</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.surfaceArea }}"
+          disabled
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-6">
+        <label class="control-label" for="population">Poblacion</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.population }}"
+          id="pupulationInput"
+        />
+      </div>
+      <div class="col-md-6">
+        <label class="control-label" for="lifeExpectancy"
+          >Espectativa De Vida</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          value="{{ countryDetails.lifeExpectancy }}"
+          id="lifeExpectancyInput"
+        />
+      </div>
+    </div>
+    <br />
+    <div class="row justify-content-md-center">
+      <button type="button" class="btn btn-primary">
+        <i class="fa fa-arrow-left"></i>
+        <a [routerLink]="['/countries', countryDetails.code]">Cancelar</a>
+      </button>
+      &nbsp;
+      <button
+        type="button"
+        class="btn btn-success"
+        data-toggle="modal"
+        data-target="#miModal"
+      >
+        <i class="fa fa-plus"></i> Guardar
+      </button>
+    </div>
+  </form>
+</div>
+
+<div
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="mySmallModalLabel"
+  aria-hidden="true"
+  id="miModal"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="confirm()" id="btn_yes">
+          Si
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

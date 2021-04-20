@@ -1,0 +1,386 @@
+<head>
+  <title>{{ country.list[0].code }} - {{ country.list[0].name }}</title>
+</head>
+
+<div>
+  <nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Paises</a></li>
+      <li class="breadcrumb-item active" aria-current="page">
+        {{ country.list[0].name }}
+      </li>
+    </ol>
+  </nav>
+
+  <h1>
+    {{ country.list[0].name }}({{ country.list[0].code }}/{{
+      country.list[0].code2
+    }})
+
+    <span class="pull-right">
+      <a class="btn btn-sm btn-success" [routerLink]="['/edit', country.list[0].code]"> <i class="fa fa-pencil"></i>Edit </a>
+    </span>
+  </h1>
+
+  <div class="row">
+    <div [ngClass]="classes"></div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col font-weight-bold">Capital</div>
+            <div class="col">{{ country.list[0].capital.name }}</div>
+          </div>
+          <div class="row">
+            <div class="col font-weight-bold">Continente</div>
+            <div class="col">{{ country.list[0].continent }}</div>
+          </div>
+          <div class="row">
+            <div class="col font-weight-bold">Región</div>
+            <div class="col">{{ country.list[0].region }}</div>
+          </div>
+          <div class="row">
+            <div class="col font-weight-bold">Presidente</div>
+            <div class="col">{{ country.list[0].headOfState }}</div>
+          </div>
+          <div class="row">
+            <div class="col font-weight-bold">Tipo De Gobierno</div>
+            <div class="col">{{ country.list[0].governmentForm }}</div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="row">
+            <div class="col font-weight-bold">Nombre Local</div>
+            <div class="col">{{ country.list[0].localName }}</div>
+          </div>
+          <div class="row">
+            <div class="col font-weight-bold">Independencia</div>
+            <div class="col">{{ country.list[0].indepYear }}</div>
+          </div>
+          <div class="row">
+            <div class="col font-weight-bold">Superficie</div>
+            <div class="col">{{ country.list[0].surfaceArea }}</div>
+          </div>
+          <div class="row">
+            <div class="col font-weight-bold">Población</div>
+            <div class="col">{{ country.list[0].population }}</div>
+          </div>
+          <div class="row">
+            <div class="col font-weight-bold">Expectativa De Vida</div>
+            <div class="col">{{ country.list[0].lifeExpectancy }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-3">
+      <h2>
+        Ciudades
+        <span class="pull-right">
+          <button
+            type="button"
+            class="btn btn-sm btn-success"
+            title="Add New City"
+            data-toggle="modal"
+            data-target="#cityModal"
+          >
+            <i class="fa fa-plus"></i> Nueva Ciudad
+          </button>
+        </span>
+      </h2>
+
+      <ul class="list-group">
+        <li
+          class="list-group-item alert alert-info"
+          *ngIf="cities.lenght <= 0; else showCit"
+        >
+          <i class="fa fa-spinner fa-spin"></i> Cargando Ciudades...
+        </li>
+
+        <ng-template #showCit>
+          <li
+            class="list-group-item"
+            *ngFor="let city of cities"
+          >
+            {{ city.name }}
+            <br />
+            <small class="grey">{{ city.district }}</small>
+            <span class="pull-right">
+              <span class="badge badge-primary">{{ city.population }}</span>
+              <a
+                href="javascript:void(0)"
+                (click)="deleteCity(city.id)"
+                class="delete-city text-danger"
+                title="Borrar Ciudad"
+                #elementToDelete
+              >
+                <i class="fa fa-times"></i
+              ></a>
+            </span>
+          </li>
+          <button class="btn btn-sm btn-primary btn-block" (click)="loadMoreCities()">Cargar Más</button>
+        </ng-template>
+      </ul>
+    </div>
+
+    <div class="col-md-3">
+      <h2>
+        Idiomas
+        <span class="pull-right">
+          <button
+            id="new-language"
+            class="btn btn-sm btn-success"
+            title="Add New Language"
+            data-toggle="modal"
+            data-target="#languageModal"
+          >
+            <i class="fa fa-plus"></i> Nueva Lengua
+          </button>
+        </span>
+      </h2>
+      <ul class="list-group">
+        <li
+          class="list-group-item alert alert-info"
+          *ngIf="languages.lenght <= 0; else showLang"
+        >
+          <i class="fa fa-spinner fa-spin"></i> Cargando Idiomas...
+        </li>
+
+        <ng-template #showLang>
+          <li class="list-group-item" *ngFor="let language of language">
+            {{ language.language }}
+            <!-- <i class="fa fa-certificate" style="color: green;" title="Lenguage Oficial"></i>-->
+            <span class="pull-right">
+              <span class="badge badge-primary">{{ language.percentage }}</span>
+              <a
+                href="javascript:void(0)"
+                (click)="deleteLanguage(language.language)"
+                class="delete-language text-danger"
+                title="Borrar Lenguaje"
+              >
+                <i class="fa fa-times"></i>
+              </a>
+            </span>
+          </li>
+          <button
+            class="btn btn-sm btn-primary btn-block"
+            (click)="loadMoreLanguage()"
+          >
+            Cargar Más
+          </button>
+        </ng-template>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h2>PIB</h2>
+      <div id="gdp-chart" style="height: 480px">
+        <div class="alert alert-info">
+          <div *ngIf="dataAvailable">
+            Datos del PIB de <b>{{ country.list[0].name }}</b> no están
+            disponibles
+          </div>
+          <div *ngIf="chart">
+            <canvas id="canvas">{{ chart }}</canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div
+  class="modal fade"
+  id="cityModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="city Modal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Ciudad</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" #cityForm="ngForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label class="required" for="name">Nombre</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control required"
+                [(ngModel)]="cityName"
+                #name="ngModel"
+                required
+              />
+              <div
+                [hidden]="name.valid || name.pristine"
+                class="alert alert-danger"
+              >
+                Nombre Obligatorio
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12">
+              <label class="required" for="district">Distrito</label>
+              <input
+                type="text"
+                name="district"
+                id="district"
+                class="form-control required"
+                [(ngModel)]="cityDistrict"
+                #district="ngModel"
+                required
+              />
+              <div
+                [hidden]="district.valid || district.pristine"
+                class="alert alert-danger"
+              >
+                Distrito Obligatorio
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12">
+              <label class="required" for="population">Población</label>
+              <input
+                type="text"
+                name="population"
+                id="population"
+                class="form-control required number"
+                [(ngModel)]="cityPopulation"
+                #population="ngModel"
+                required
+              />
+              <div
+                [hidden]="population.valid || population.pristine"
+                class="alert alert-danger"
+              >
+                Población Obligatorio
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="!cityForm.form.valid"
+          (click)="saveCity(); cityForm.reset()"
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="languageModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="language Modal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Agregar Lenguage</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" #languageForm="ngForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label class="required" for="language">Nombre Lengua</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control required"
+                [(ngModel)]="languageName"
+                required
+              />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12">
+              <label class="form-check-label">
+                <input type="hidden" name="isOfficial" value="0" />
+                <input
+                  type="checkbox"
+                  class="form-check-label"
+                  id="isOfficial"
+                  name="isOfficial"
+                  value="0"
+                  [(ngModel)]="languageFlag"
+                />
+                ¿Es Oficial?
+              </label>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12">
+              <label class="required" for="percentage">Porcentaje</label>
+              <input
+                type="text"
+                name="percentage"
+                id="percentage"
+                class="form-control required number"
+                [(ngModel)]="languagePercentage"
+                required
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-primary"
+          [disabled]="!languageForm.form.valid"
+          (click)="addLanguage(); languageForm.reset()"
+        >
+        Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
