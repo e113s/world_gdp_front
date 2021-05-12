@@ -8,7 +8,7 @@ import { CountryLanguage } from '../modelos/country-language';
   providedIn: 'root'
 })
 export class LanguageService {
-  private url = "http://localhost:4000/worldgdp/api/languages/";
+  private url = "https://world-gdp.herokuapp.com/worldgdp/api/languages/";
 
   constructor(private http: HttpClient) { }
 
