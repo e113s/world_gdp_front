@@ -9,6 +9,7 @@ import { CountryLanguage } from '../modelos/country-language';
 })
 export class LanguageService {
   private url = "https://world-gdp.herokuapp.com/worldgdp/api/languages/";
+  
 
   constructor(private http: HttpClient) { }
 
