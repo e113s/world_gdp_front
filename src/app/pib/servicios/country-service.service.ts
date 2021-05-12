@@ -8,7 +8,7 @@ import { retry, catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CountryServiceService {
-  private url = "http://localhost:4000/worldgdp/api/countries";
+  private url = "https://world-gdp.herokuapp.com/worldgdp/api/countries";
 
   constructor(private http: HttpClient) { }
 
