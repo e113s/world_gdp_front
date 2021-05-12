@@ -8,7 +8,7 @@ import { City, ICity } from '../modelos/city';
   providedIn: 'root'
 })
 export class CityService {
-  private url = "http://localhost:4000/worldgdp/api/cities/";
+  private url = "https://world-gdp.herokuapp.com/worldgdp/api/cities/";
 
   constructor(private http : HttpClient) { }
 
