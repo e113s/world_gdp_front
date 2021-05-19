@@ -333,7 +333,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _componentes_country_form_country_form_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./componentes/country-form/country-form.component */ "CNFb");
 /* harmony import */ var _componentes_country_details_country_details_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./componentes/country-details/country-details.component */ "RJq5");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../app-routing.module */ "vY5A");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _componentes_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./componentes/not-found/not-found.component */ "Kteq");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -344,9 +346,9 @@ __webpack_require__.r(__webpack_exports__);
 
 class PibModule {
 }
-PibModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineNgModule"]({ type: PibModule });
-PibModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineInjector"]({ factory: function PibModule_Factory(t) { return new (t || PibModule)(); }, imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_2__["NgxPaginationModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"]]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵsetNgModuleScope"](PibModule, { declarations: [_componentes_country_country_component__WEBPACK_IMPORTED_MODULE_1__["CountryComponent"], _componentes_country_form_country_form_component__WEBPACK_IMPORTED_MODULE_4__["CountryFormComponent"], _componentes_country_details_country_details_component__WEBPACK_IMPORTED_MODULE_5__["CountryDetailsComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_2__["NgxPaginationModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"]], exports: [_componentes_country_country_component__WEBPACK_IMPORTED_MODULE_1__["CountryComponent"], _componentes_country_form_country_form_component__WEBPACK_IMPORTED_MODULE_4__["CountryFormComponent"], _componentes_country_details_country_details_component__WEBPACK_IMPORTED_MODULE_5__["CountryDetailsComponent"]] }); })();
+PibModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineNgModule"]({ type: PibModule });
+PibModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineInjector"]({ factory: function PibModule_Factory(t) { return new (t || PibModule)(); }, imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_2__["NgxPaginationModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"]]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵsetNgModuleScope"](PibModule, { declarations: [_componentes_country_country_component__WEBPACK_IMPORTED_MODULE_1__["CountryComponent"], _componentes_country_form_country_form_component__WEBPACK_IMPORTED_MODULE_4__["CountryFormComponent"], _componentes_country_details_country_details_component__WEBPACK_IMPORTED_MODULE_5__["CountryDetailsComponent"], _componentes_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_7__["NotFoundComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_2__["NgxPaginationModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"]], exports: [_componentes_country_country_component__WEBPACK_IMPORTED_MODULE_1__["CountryComponent"], _componentes_country_form_country_form_component__WEBPACK_IMPORTED_MODULE_4__["CountryFormComponent"], _componentes_country_details_country_details_component__WEBPACK_IMPORTED_MODULE_5__["CountryDetailsComponent"], _componentes_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_7__["NotFoundComponent"]] }); })();
 
 
 /***/ }),
@@ -395,7 +397,7 @@ __webpack_require__.r(__webpack_exports__);
 class CityService {
     constructor(http) {
         this.http = http;
-        this.url = "http://localhost:4000/worldgdp/api/cities/";
+        this.url = "https://world-gdp.herokuapp.com/worldgdp/api/cities/";
         this.headers = { 'Content-type': 'application/json' };
     }
     getCities(countryCode, pageNo) {
@@ -458,6 +460,47 @@ class Country {
         this.code2 = code2;
     }
 }
+
+
+/***/ }),
+
+/***/ "Kteq":
+/*!******************************************************************!*\
+  !*** ./src/app/pib/componentes/not-found/not-found.component.ts ***!
+  \******************************************************************/
+/*! exports provided: NotFoundComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotFoundComponent", function() { return NotFoundComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
+
+
+class NotFoundComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+NotFoundComponent.ɵfac = function NotFoundComponent_Factory(t) { return new (t || NotFoundComponent)(); };
+NotFoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NotFoundComponent, selectors: [["app-not-found"]], decls: 10, vars: 0, consts: [[1, "container"], [1, "starter-template"], [1, "lead"], ["routerLink", "/"]], template: function NotFoundComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h1");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "404 No Encontrado");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "p", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Parece que no hemos podido encontrar lo que buscas. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, " Regresar: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "a", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Inicio");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLinkWithHref"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJub3QtZm91bmQuY29tcG9uZW50LmNzcyJ9 */"] });
 
 
 /***/ }),
@@ -1529,7 +1572,7 @@ __webpack_require__.r(__webpack_exports__);
 class CountryServiceService {
     constructor(http) {
         this.http = http;
-        this.url = "http://localhost:4000/worldgdp/api/countries";
+        this.url = "https://world-gdp.herokuapp.com/worldgdp/api/countries";
         this.headers = { 'Content-type': 'application/json' };
     }
     getCountries(params) {
@@ -1877,7 +1920,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pib_componentes_country_form_country_form_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pib/componentes/country-form/country-form.component */ "CNFb");
 /* harmony import */ var _pib_componentes_country_country_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pib/componentes/country/country.component */ "ZXzQ");
 /* harmony import */ var _pib_componentes_country_details_country_details_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pib/componentes/country-details/country-details.component */ "RJq5");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _pib_componentes_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pib/componentes/not-found/not-found.component */ "Kteq");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -1887,13 +1932,14 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     { path: "", component: _pib_componentes_country_country_component__WEBPACK_IMPORTED_MODULE_2__["CountryComponent"] },
     { path: "edit/:code", component: _pib_componentes_country_form_country_form_component__WEBPACK_IMPORTED_MODULE_1__["CountryFormComponent"] },
-    { path: "countries/:code", component: _pib_componentes_country_details_country_details_component__WEBPACK_IMPORTED_MODULE_3__["CountryDetailsComponent"] }
+    { path: "countries/:code", component: _pib_componentes_country_details_country_details_component__WEBPACK_IMPORTED_MODULE_3__["CountryDetailsComponent"] },
+    { path: "**", component: _pib_componentes_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_4__["NotFoundComponent"] }
 ];
 class AppRoutingModule {
 }
-AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵdefineInjector"]({ factory: function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); }, imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
+AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
+AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineInjector"]({ factory: function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); }, imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),
@@ -1919,7 +1965,7 @@ __webpack_require__.r(__webpack_exports__);
 class LanguageService {
     constructor(http) {
         this.http = http;
-        this.url = "http://localhost:4000/worldgdp/api/languages/";
+        this.url = "https://world-gdp.herokuapp.com/worldgdp/api/languages/";
         this.headers = { 'Content-type': 'application/json' };
     }
     getLanguages(countryCode, pageNo) {
